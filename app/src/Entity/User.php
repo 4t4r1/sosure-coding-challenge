@@ -11,16 +11,22 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $username;
+    private string $username;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $password;
+    private string $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $level;
+    private string $level;
+
+    public function __construct(string $username, string $password, string $level) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->level = $level;
+    }
 
     public function getId(): ?int
     {
