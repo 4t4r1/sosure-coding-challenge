@@ -16,3 +16,9 @@ RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 RUN git config --global user.email "andrew.gerber@neansy.com" \
     && git config --global user.name "Andrew Gerber"
+
+WORKDIR /var/www/symfony_docker
+
+COPY app/composer.json app/composer.lock ./
+
+RUN composer dump-autoload --optimize --apcu --no-dev
